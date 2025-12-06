@@ -1,0 +1,15 @@
+<!--if u dont have an account then go and sign up first-->
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h3 class="text-center">SignIn</h3>
+
+<form action="{% url 'signin' %}" method="POST" style="width: 500px; margin:auto;">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-primary">SignIn</button>
+</form>
+
+
+{% endblock %}

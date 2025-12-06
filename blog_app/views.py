@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blogs.models import Blog, Category
+from .forms import RegistrationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth
 
 def home(request):
-    # categories = Category.objects.all()
-    # print(categories)
     featured_posts = Blog.objects.filter(is_featured = True, status = 'Published').order_by('updated_at')
-    # print(featured_posts)
     posts = Blog.objects.filter(is_featured=False, status = 'Published')
     # print (posts)
     context = {
@@ -13,3 +13,40 @@ def home(request):
         'posts': posts, 
     }
     return render(request, 'home.html', context)
+
+def signup(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            return redirect('signup')
+    else:
+        form = RegistrationForm()
+
+    context = {
+        'form':form,
+    }
+    return render(request, 'signup.html', context)
+
+def signin(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+            return redirect('home')
+    form = AuthenticationForm()
+    context = {
+        'form':form,
+    }
+    
+    return render(request, 'signin.html', context)
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

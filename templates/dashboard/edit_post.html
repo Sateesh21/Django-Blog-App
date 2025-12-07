@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+
+    {% include 'dashboard/sidebar.html' %}
+
+    <div class="col-md-9">
+        <h6>EDIT THE POST</h6>
+        <a href="{% url 'posts' %}" class="btn btn-primary text-light float-right mb-2">Back</a>
+
+        <form action="{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        
+    </div>
+</div>
+
+{% endblock %}
+

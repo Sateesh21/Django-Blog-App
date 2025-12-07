@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django Blog Application</title>
-    {% comment %} <link rel="icon" type="image/png" href="bo"> {% endcomment %}
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
@@ -33,8 +32,8 @@
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             {% if not user.is_authenticated %}
-            <a class="btn btn-sm btn-warning" href="{% url 'signin' %}">Sign In</a> &nbsp;
-            <a class="btn btn-sm btn-outline-secondary" href="{% url 'signup' %}">Sign Up</a>
+            <a class="btn btn-sm btn-primary" href="{% url 'signin' %}">Sign In</a> &nbsp;
+            <a class="btn btn-sm btn-outline-primary" href="{% url 'signup' %}">Sign Up</a>
             {% else %}
             <span><a href="{% url 'dashboard' %}">Dashboard</a></span>
             &emsp;

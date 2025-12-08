@@ -40,17 +40,8 @@
                                 {% for cat in categories %}
                                 <li><a href="{% url 'posts_by_category' cat.id %}"> {{ cat.category_name }}</a></li>
                                 {% endfor %}
-                                {% comment %} <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li> {% endcomment %}
                             </ul>
                         </div>
-                        {% comment %} <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div> {% endcomment %}
                     </div>
                 </div>
             </div>
@@ -60,7 +51,6 @@
                 <ol class="list-unstyled">
                     <li><a href="https://github.com/Sateesh21" target="_blank">GitHub</a></li>
                     <li><a href="https://www.linkedin.com/in/sateesh16" target="_blank">LinkedIn</a></li>
-                    {% comment %} <li><a href="https://www.linkedin.com/in/sateesh16" target="_blank">LinkedIn</a></li> {% endcomment %}
                 </ol>
             </div>
         </div>

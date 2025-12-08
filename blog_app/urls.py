@@ -11,7 +11,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
     path('blogs/<slug:slug>/', BlogsView.blogs, name='blogs'),
-    path('blogs/search/', BlogsView.search, name='search'),
+    path('search/', BlogsView.search, name='search'),
     path('signup/', views.signup, name='signup'),
     path('signin/', views.signin, name='signin'),
     path('logout/', views.logout, name='logout'),

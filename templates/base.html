@@ -35,7 +35,9 @@
             <a class="btn btn-sm btn-primary" href="{% url 'signin' %}">Sign In</a> &nbsp;
             <a class="btn btn-sm btn-outline-primary" href="{% url 'signup' %}">Sign Up</a>
             {% else %}
+            {% if perms.auth.view_user %}
             <span><a href="{% url 'dashboard' %}">Dashboard</a></span>
+            {% endif %}
             &emsp;
             <span><a href="{% url 'logout' %}">Logout</a></span>
             {% endif %}
